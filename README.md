@@ -35,7 +35,7 @@ Příkazy se píšou bez diakritiky, na velikosti písmen nezáleží. Seznam p�
 ## Struktura projektu
 
 - `domain`: prostory, věci, postavy, batoh, hráč
-- `command`: příkazy a jejich zpracování
+- `ICommand`: příkazy a jejich zpracování
 - `game`: hlavní herní smyčka a stav hry
 - `data`: načítání herních dat a ukládání hry (JSON)
 
