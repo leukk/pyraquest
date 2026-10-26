@@ -1,0 +1,125 @@
+{
+  "items": [
+    {
+      "code": "nuz",
+      "name": "Nůž",
+      "portable": true,
+      "container": false,
+      "location": {
+        "type": "room",
+        "code": "chodba"
+      }
+    },
+    {
+      "code": "kresadlo",
+      "name": "Křesadlo",
+      "portable": true,
+      "container": false,
+      "location": {
+        "type": "room",
+        "code": "pokladnice"
+      }
+    },
+    {
+      "code": "zlata-cihla",
+      "name": "Zlatá cihla",
+      "portable": true,
+      "container": false,
+      "location": {
+        "type": "room",
+        "code": "pokladnice"
+      }
+    },
+    {
+      "code": "pochoden",
+      "name": "Pochodeň",
+      "portable": true,
+      "container": false,
+      "location": {
+        "type": "room",
+        "code": "doupe"
+      }
+    },
+    {
+      "code": "kost",
+      "name": "Kost",
+      "portable": true,
+      "container": false,
+      "location": {
+        "type": "item",
+        "code": "hromada-kosti"
+      }
+    },
+    {
+      "code": "klic",
+      "name": "Klíč",
+      "portable": true,
+      "container": false,
+      "location": {
+        "type": "npc",
+        "code": "kostlivec"
+      }
+    },
+    {
+      "code": "tnt",
+      "name": "TNT",
+      "portable": true,
+      "container": false,
+      "location": {
+        "type": "item",
+        "code": "truhla"
+      }
+    },
+    {
+      "code": "maska",
+      "name": "Maska",
+      "portable": true,
+      "container": false,
+      "location": {
+        "type": "item",
+        "code": "sarkofag"
+      }
+    },
+    {
+      "code": "hromada-kosti",
+      "name": "Hromada kostí",
+      "portable": false,
+      "container": true,
+      "location": {
+        "type": "room",
+        "code": "kostnice"
+      }
+    },
+    {
+      "code": "truhla",
+      "name": "Truhla",
+      "portable": false,
+      "container": true,
+      "locked": true,
+      "location": {
+        "type": "room",
+        "code": "komnata"
+      }
+    },
+    {
+      "code": "sarkofag",
+      "name": "Sarkofág",
+      "portable": false,
+      "container": true,
+      "location": {
+        "type": "room",
+        "code": "hrobka"
+      }
+    },
+    {
+      "code": "zed",
+      "name": "Zeď",
+      "portable": false,
+      "container": false,
+      "location": {
+        "type": "room",
+        "code": "predsin"
+      }
+    }
+  ]
+}
