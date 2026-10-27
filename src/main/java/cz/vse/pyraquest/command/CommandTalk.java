@@ -1,13 +1,15 @@
 package cz.vse.pyraquest.command;
 
 public class CommandTalk implements ICommand {
-    private static String NAME = "mluv";
+    private static final String NAME = "mluv";
 
-    public String execute(String... parameter){
+    @Override
+    public String execute(String... parameters) {
         return null;
     }
 
-    public static String getNAME() {
+    @Override
+    public String getName() {
         return NAME;
     }
 }

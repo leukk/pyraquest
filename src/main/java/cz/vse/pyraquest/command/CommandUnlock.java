@@ -3,11 +3,13 @@ package cz.vse.pyraquest.command;
 public class CommandUnlock implements ICommand {
     private static final String NAME = "odemkni";
 
-    public String execute(String... parameter){
+    @Override
+    public String execute(String... parameters) {
         return null;
     }
 
-    public static String getNAME() {
+    @Override
+    public String getName() {
         return NAME;
     }
 }
