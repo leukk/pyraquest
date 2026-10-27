@@ -1,0 +1,11 @@
+{
+  "system.intro": "Vítej v PyraQuestu!\n\nJsi hledač pokladů a v noci ses protáhl škvírou do staré pyramidy. Někde uvnitř leží faraon se zlatou pohřební maskou. Najdi ji a vynes ji ven stejnou cestou, kudy jsi přišel.\n\nDo batohu se ti vejdou jen dvě věci.\n\nKdyž si nebudeš vědět rady, napiš napoveda. Seznam příkazů vypíše pomoc.",
+  "system.help": "Příkazy:\n\n  jdi <prostor>          přesune tě do sousedního prostoru\n  seber <vec>            vezme věc do batohu\n  poloz <vec>            položí věc z batohu na zem\n  mluv <postava>         promluví s postavou\n  dej <vec> <postava>    dá věc z batohu postavě\n  odpovez <cislo>        odpoví na otázku mumie\n  utoc <nepritel>        zaútočí na nepřítele\n  zapal <vec>            zapálí věc (potřebuješ křesadlo)\n  odemkni <predmet>      odemkne předmět klíčem\n  otevri <predmet>       otevře předmět\n  prohledni <predmet>    prohledá předmět\n  uloz <nazev>           uloží hru\n  nacti <nazev>          načte uloženou hru\n  napoveda               poradí, co dělat\n  pomoc                  vypíše tento seznam\n  konec                  ukončí hru bez uložení",
+  "system.hint": "Pár rad od starého vykradače:\n\n- Na nepřítele jdi s nožem a útoč hned, jak vejdeš.\n- Batoh pojme jen dvě věci. Co nepotřebuješ, polož.\n- Do tmy bez pochodně nechoď, bez křesadla nic nezapálíš.\n- S postavami, které tě nechtějí zabít, si promluv.\n- Něco je potřeba otevřít, něco prohledat.\n- Zeď prorazí jen výbuch. Po zapálení TNT hned utíkej.\n- S maskou v batohu se vrať ke vstupu.",
+  "system.quit": "Hra končí. Pyramida si na tebe počká.",
+  "system.unknown": "Tomu nerozumím. Seznam příkazů vypíše pomoc.",
+  "system.lose.suffix": "Prohrál jsi. Hra začíná znovu od začátku.",
+  "system.lose.enemy.scorpion": "Škorpion vyrazí a bodne tě. Měl jsi útočit první.",
+  "system.lose.enemy.bat": "Netopýr se ti zakousne do krku. Měl jsi útočit první.",
+  "system.lose.fuse": "Nestihl jsi utéct. Doutnák dohoří a předsíň se promění v oblak ohně a kamení."
+}
