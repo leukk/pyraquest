@@ -32,14 +32,14 @@ public class Riddle {
     private void validateQuestions() {
         if (allQuestions.size() < 3) {
             throw new IllegalArgumentException(
-                    "Hádanka musí obsahovať aspoň 3 otázky."
+                    "Hádanka musí obsahovat alespoň 3 otázky."
             );
         }
 
         for (Question question : allQuestions) {
             if (question.getCorrect() < 1 || question.getCorrect() > 4) {
                 throw new IllegalArgumentException(
-                        "Správna odpoveď musí byť číslo od 1 do 4."
+                        "Správná odpověď musí být číslo od 1 do 4.."
                 );
             }
         }

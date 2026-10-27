@@ -143,7 +143,7 @@ class RiddleTest {
                 correctField.setAccessible(true);
 
                 idField.set(question, id);
-                textField.set(question, "Testovacia otázka " + id);
+                textField.set(question, "Testovaci otazka " + id);
                 optionsField.set(question, List.of("A", "B", "C", "D"));
                 correctField.set(question, 1);
 
