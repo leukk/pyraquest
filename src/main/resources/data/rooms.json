@@ -1,1 +1,88 @@
-[]
+{
+  "rooms": [
+    {
+      "code": "vstup",
+      "name": "Start",
+      "description": "Stojíš ve vstupu do pyramidy. Škvírou sem proniká měsíční světlo. Tudy zmizíš, až budeš mít masku.",
+      "exits": ["chodba"],
+      "entryCondition": null
+    },
+    {
+      "code": "chodba",
+      "name": "Chodba",
+      "description": "Úzká nízká chodba. Stěny jsou pokryté hieroglyfy.",
+      "exits": ["vstup", "sal"],
+      "entryCondition": null
+    },
+    {
+      "code": "sal",
+      "name": "Sloupová síň",
+      "description": "Obrovská síň plná mohutných sloupů. Chodby odsud vedou na všechny čtyři strany.",
+      "exits": ["chodba", "rozcesti-zapad", "rozcesti-vychod", "rozcesti-sever"],
+      "entryCondition": null
+    },
+    {
+      "code": "rozcesti-zapad",
+      "name": "Západní rozcestí",
+      "description": "Křižovatka chodeb na západní straně pyramidy.",
+      "exits": ["sal", "pokladnice", "kostnice"],
+      "entryCondition": null
+    },
+    {
+      "code": "pokladnice",
+      "name": "Pokladnice",
+      "description": "Malá komora na faraonovy poklady. Vykradači před tebou odsud odnesli skoro všechno.",
+      "exits": ["rozcesti-zapad"],
+      "entryCondition": null
+    },
+    {
+      "code": "kostnice",
+      "name": "Kostnice",
+      "description": "Temná místnost plná lidských kostí.",
+      "exits": ["rozcesti-zapad"],
+      "entryCondition": "dark"
+    },
+    {
+      "code": "rozcesti-vychod",
+      "name": "Východní rozcestí",
+      "description": "Křižovatka chodeb na východní straně pyramidy.",
+      "exits": ["sal", "doupe"],
+      "entryCondition": null
+    },
+    {
+      "code": "doupe",
+      "name": "Škorpioní doupě",
+      "description": "Tmavá díra a pod nohama písek. Ve škvírách ve zdech něco tiše šramotí.",
+      "exits": ["rozcesti-vychod"],
+      "entryCondition": null
+    },
+    {
+      "code": "rozcesti-sever",
+      "name": "Severní rozcestí",
+      "description": "Křižovatka na severní straně pyramidy. Pomaly se blížíš k faraonovi.",
+      "exits": ["sal", "komnata", "predsin"],
+      "entryCondition": null
+    },
+    {
+      "code": "komnata",
+      "name": "Komnata mumie",
+      "description": "Chladná tichá komnata. Stěny jsou pokryté modlitbami za mrtvé a v rohu vidíš zamčenou truhlu.",
+      "exits": ["rozcesti-sever"],
+      "entryCondition": null
+    },
+    {
+      "code": "predsin",
+      "name": "Předsíň hrobky",
+      "description": "Úzká předsíň před hrobkou. Faraon musí ležet hned vedle.",
+      "exits": ["rozcesti-sever", "hrobka"],
+      "entryCondition": null
+    },
+    {
+      "code": "hrobka",
+      "name": "Faraonova hrobka",
+      "description": "Hrobka faraona. Stěny se lesknou zlatem. Kvůli tomuhle místu jsi sem lezl.",
+      "exits": ["predsin"],
+      "entryCondition": "wall"
+    }
+  ]
+}
