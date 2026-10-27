@@ -78,4 +78,22 @@ public class Room {
         npcs.remove(npc);
     }
 
+    public Item getItem(String code) {
+        for (Item item : items) {
+            if (item.getCode().equals(code)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public Npc getNpc(String code) {
+        for (Npc npc : npcs) {
+            if (npc.getCode().equals(code)) {
+                return npc;
+            }
+        }
+        return null;
+    }
+
 }
