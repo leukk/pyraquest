@@ -1,7 +1,9 @@
 package cz.vse.pyraquest.command;
 
+import cz.vse.pyraquest.game.GameState;
+
 public interface ICommand {
     String getName();
 
-    String execute(String... parameters);
+    String execute(GameState state, String... parameters);
 }
