@@ -9,6 +9,15 @@ public class Item {
     private final String name;
     private final boolean portable;
     private final boolean container;
+    private boolean searched;
+
+    public boolean isSearched() {
+        return searched;
+    }
+
+    public void setSearched(boolean searched) {
+        this.searched = searched;
+    }
 
 
     private final List<Item> contents = new ArrayList<>();
