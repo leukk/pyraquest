@@ -1,0 +1,30 @@
+{
+  "npcs": [
+    {
+      "code": "skorpion",
+      "name": "Škorpion",
+      "type": "enemy",
+      "room": "doupe",
+      "guardedItem": "pochoden"
+    },
+    {
+      "code": "netopyr",
+      "name": "Netopýr",
+      "type": "enemy",
+      "room": "kostnice",
+      "guardedItem": "hromada-kosti"
+    },
+    {
+      "code": "kostlivec",
+      "name": "Kostlivec",
+      "type": "skeleton",
+      "room": "sal"
+    },
+    {
+      "code": "mumie",
+      "name": "Mumie",
+      "type": "mummy",
+      "room": "komnata"
+    }
+  ]
+}

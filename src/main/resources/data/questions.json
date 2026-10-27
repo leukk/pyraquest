@@ -1,0 +1,58 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "text": "Ráno chodí po čtyřech, v poledne po dvou a večer po třech. Kdo je to?",
+      "options": ["lev", "člověk", "velbloud", "sfinga"],
+      "correct": 2
+    },
+    {
+      "id": 2,
+      "text": "Kdo mě vyrábí, ten mě prodává. Kdo mě kupuje, ten mě nepotřebuje. Kdo mě potřebuje, ten o mně neví. Co jsem?",
+      "options": ["amulet", "maska", "sarkofág", "pochodeň"],
+      "correct": 3
+    },
+    {
+      "id": 3,
+      "text": "Čím víc ze mě vezmeš, tím jsem větší. Co jsem?",
+      "options": ["díra", "poušť", "stín", "hromada písku"],
+      "correct": 1
+    },
+    {
+      "id": 4,
+      "text": "Roste, ale nežije. Nemá plíce, a přesto bez vzduchu zemře. Voda ho zabije. Co je to?",
+      "options": ["písek", "strom", "stín", "oheň"],
+      "correct": 4
+    },
+    {
+      "id": 5,
+      "text": "Jde za tebou celý den, ale v noci zmizí. Co je to?",
+      "options": ["škorpion", "stín", "slunce", "sluha"],
+      "correct": 2
+    },
+    {
+      "id": 6,
+      "text": "Patří tobě, ale ostatní ho používají častěji než ty. Co je to?",
+      "options": ["batoh", "hlas", "jméno", "nůž"],
+      "correct": 3
+    },
+    {
+      "id": 7,
+      "text": "Má města, ale žádné domy. Má řeky, ale žádnou vodu. Co je to?",
+      "options": ["poušť", "mapa", "sen", "obraz"],
+      "correct": 2
+    },
+    {
+      "id": 8,
+      "text": "Který egyptský bůh měl hlavu šakala a provázel mrtvé na onen svět?",
+      "options": ["Ra", "Hor", "Thovt", "Anubis"],
+      "correct": 4
+    },
+    {
+      "id": 9,
+      "text": "Čím je jí víc, tím míň vidíš. Co je to?",
+      "options": ["tma", "zlato", "voda", "prach"],
+      "correct": 1
+    }
+  ]
+}
