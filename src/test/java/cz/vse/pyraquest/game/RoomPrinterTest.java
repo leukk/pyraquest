@@ -34,11 +34,11 @@ class RoomPrinterTest {
         GameState state = stateIn(hall);
         state.getPlayer().getBackpack().add(new Item("nuz", "Nůž", true, false, false));
 
-        String expected = "Sloupová síň\n\n"
-                + "Obrovská síň.\n\n"
-                + "Východy: chodba\n\n"
-                + "Věci: -\n\n"
-                + "Postavy: kostlivec\n\n"
+        String expected = "Sloupová síň\n"
+                + "Obrovská síň.\n"
+                + "Východy: chodba\n"
+                + "Věci: -\n"
+                + "Postavy: kostlivec\n"
                 + "Batoh (1/2): nuz";
         assertEquals(expected, RoomPrinter.describe(state));
     }
@@ -64,16 +64,11 @@ class RoomPrinterTest {
     }
 
     @Test
-    void openedContainerShowsItsContents() {
+    void listsEveryItemLyingInTheRoom() {
         Room chamber = new Room("komnata", "Komnata", "popis", null);
-        Item chest = new Item("truhla", "Truhla", false, true, false);
-        chest.addItem(new Item("tnt", "TNT", true, false, false));
-        chamber.addItem(chest);
-        GameState state = stateIn(chamber);
+        chamber.addItem(new Item("truhla", "Truhla", false, true, false));
+        chamber.addItem(new Item("tnt", "TNT", true, false, false));
 
-        assertTrue(RoomPrinter.describe(state).contains("Věci: truhla\n"));
-
-        chest.setOpened(true);
-        assertTrue(RoomPrinter.describe(state).contains("Věci: truhla, tnt\n"));
+        assertTrue(RoomPrinter.describe(stateIn(chamber)).contains("Věci: truhla, tnt\n"));
     }
 }

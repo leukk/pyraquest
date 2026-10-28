@@ -25,11 +25,11 @@ public class RoomPrinter {
         String inBackpack = joinOrDash(backpackCodes(backpack));
         int count = backpack.getItems().size();
 
-        String result = room.getName() + "\n\n"
-                + room.getDescription() + "\n\n"
-                + texts.get("system.room.exits") + " " + exits + "\n\n"
-                + texts.get("system.room.items") + " " + items + "\n\n"
-                + texts.get("system.room.npcs") + " " + npcs + "\n\n"
+        String result = room.getName() + "\n"
+                + room.getDescription() + "\n"
+                + texts.get("system.room.exits") + " " + exits + "\n"
+                + texts.get("system.room.items") + " " + items + "\n"
+                + texts.get("system.room.npcs") + " " + npcs + "\n"
                 + texts.get("system.room.backpack") + " (" + count + "/" + Backpack.CAPACITY + "): " + inBackpack;
 
         for (Npc npc : room.getNpcs()) {
@@ -45,11 +45,6 @@ public class RoomPrinter {
         List<String> codes = new ArrayList<>();
         for (Item item : room.getItems()) {
             codes.add(item.getCode());
-            if (item.isContainer() && item.isOpened()) {
-                for (Item inside : item.getContents()) {
-                    codes.add(inside.getCode());
-                }
-            }
         }
         return codes;
     }

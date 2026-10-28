@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public class Parser {
 
-    public class ParsedInput {
+    public static class ParsedInput {
         private final String commandName;
         private final List<String> parameters;
 
