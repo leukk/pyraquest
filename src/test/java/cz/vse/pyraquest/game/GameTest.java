@@ -46,6 +46,17 @@ class GameTest {
         return createGame(this::roomWithScorpion);
     }
 
+    private Room roomWithTnt() {
+        Room predsin = new Room("predsin", "Předsíň", "popis", null);
+        predsin.addExit(new Room("rozcesti-sever", "Severní rozcestí", "popis", null));
+        predsin.addItem(new Item("tnt", "TNT", true, false, false));
+        return predsin;
+    }
+
+    private void lightTnt(GameState state) {
+        state.getRoom("predsin").getItem("tnt").setLit(true);
+    }
+
     @Test
     void unknownCommandIsRejected() {
         assertEquals("Tomu nerozumím.", createGame().processLine("skoc"));
@@ -120,8 +131,8 @@ class GameTest {
 
     @Test
     void anyMoveExceptEscapeLosesWithLitFuse() {
-        Game game = createGame();
-        game.getState().setFuseLit(true);
+        Game game = createGame(this::roomWithTnt);
+        lightTnt(game.getState());
 
         String output = game.processLine("jdi chodba");
 
@@ -130,12 +141,8 @@ class GameTest {
 
     @Test
     void escapingNorthIsSafeWithLitFuse() {
-        Game game = createGame(() -> {
-            Room start = new Room("predsin", "Předsíň", "popis", null);
-            start.addExit(new Room("rozcesti-sever", "Severní rozcestí", "popis", null));
-            return start;
-        });
-        game.getState().setFuseLit(true);
+        Game game = createGame(this::roomWithTnt);
+        lightTnt(game.getState());
 
         String output = game.processLine("jdi rozcesti-sever");
 
@@ -145,16 +152,16 @@ class GameTest {
 
     @Test
     void jdiWithoutParameterLosesWithLitFuse() {
-        Game game = createGame();
-        game.getState().setFuseLit(true);
+        Game game = createGame(this::roomWithTnt);
+        lightTnt(game.getState());
 
         assertTrue(game.processLine("jdi").startsWith("LOSS5"));
     }
 
     @Test
     void systemCommandIsSafeWithLitFuse() {
-        Game game = createGame();
-        game.getState().setFuseLit(true);
+        Game game = createGame(this::roomWithTnt);
+        lightTnt(game.getState());
 
         assertEquals("Seznam příkazů", game.processLine("pomoc"));
         assertTrue(game.isRunning());
@@ -173,13 +180,17 @@ class GameTest {
 
     @Test
     void restartGivesAFreshWorld() {
-        Game game = gameWithScorpion();
+        Game game = createGame(() -> {
+            Room predsin = roomWithTnt();
+            predsin.addNpc(new Enemy("skorpion", "Škorpion", "pochoden"));
+            return predsin;
+        });
         GameState oldState = game.getState();
 
         ((Enemy) oldState.getPlayer().getCurrentRoom().getNpc("skorpion")).kill();
         oldState.getPlayer().getBackpack().add(new Item("nuz", "Nůž", true, false, false));
         oldState.addWrongAnswer();
-        oldState.setFuseLit(true);
+        lightTnt(oldState);
 
         game.processLine("jdi chodba");   // loss 5
 
