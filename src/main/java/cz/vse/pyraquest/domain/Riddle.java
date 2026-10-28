@@ -32,19 +32,25 @@ public class Riddle {
     private void validateQuestions() {
         if (allQuestions.size() < 3) {
             throw new IllegalArgumentException(
-                    "Hádanka musí obsahovat alespoň 3 otázky."
+                    "The riddle must contain at least 3 questions."
             );
         }
 
         for (Question question : allQuestions) {
             if (question.getCorrect() < 1 || question.getCorrect() > 4) {
                 throw new IllegalArgumentException(
-                        "Správná odpověď musí být číslo od 1 do 4.."
+                        "The correct answer must be between 1 and 4."
+                );
+            }
+
+            if (question.getOptions() == null
+                    || question.getOptions().size() != 4) {
+                throw new IllegalArgumentException(
+                        "Each question must have exactly 4 options."
                 );
             }
         }
     }
-
     public void start() {
         if (started) {
             return;

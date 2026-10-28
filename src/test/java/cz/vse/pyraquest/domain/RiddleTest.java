@@ -15,15 +15,17 @@ class RiddleTest {
         List<Question> questions = new ArrayList<>();
 
         for (int i = 1; i <= 9; i++) {
-            Question question = new Question();
-            questions.add(createQuestion(i));
+            Question question = new Question(
+                    i,
+                    "Test question " + i,
+                    List.of("A", "B", "C", "D"),
+                    1
+            );
+
+            questions.add(question);
         }
 
         return questions;
-    }
-
-    private Question createQuestion(int id) {
-        return new TestQuestion(id).toQuestion();
     }
 
     @Test
@@ -121,37 +123,5 @@ class RiddleTest {
     }
 
 
-    private static class TestQuestion {
-        private final int id;
 
-        private TestQuestion(int id) {
-            this.id = id;
-        }
-
-        private Question toQuestion() {
-            Question question = new Question();
-
-            try {
-                var idField = Question.class.getDeclaredField("id");
-                var textField = Question.class.getDeclaredField("text");
-                var optionsField = Question.class.getDeclaredField("options");
-                var correctField = Question.class.getDeclaredField("correct");
-
-                idField.setAccessible(true);
-                textField.setAccessible(true);
-                optionsField.setAccessible(true);
-                correctField.setAccessible(true);
-
-                idField.set(question, id);
-                textField.set(question, "Testovaci otazka " + id);
-                optionsField.set(question, List.of("A", "B", "C", "D"));
-                correctField.set(question, 1);
-
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-
-            return question;
-        }
-    }
 }

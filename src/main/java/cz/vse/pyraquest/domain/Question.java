@@ -3,10 +3,17 @@ package cz.vse.pyraquest.domain;
 import java.util.*;
 
 public class Question {
-    private int id;
-    private String text;
-    private List<String> options;
-    private int correct;
+    private final int id;
+    private final String text;
+    private final List<String> options;
+    private final int correct;
+
+    public Question(int id, String text, List<String> options, int correct) {
+        this.id = id;
+        this.text = text;
+        this.options = options;
+        this.correct = correct;
+    }
 
     public int getId() {return id;}
 
