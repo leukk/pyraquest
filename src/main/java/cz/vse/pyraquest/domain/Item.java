@@ -9,6 +9,7 @@ public class Item {
     private final String name;
     private final boolean portable;
     private final boolean container;
+    private final boolean ignitable;
     private boolean searched;
 
     public boolean isSearched() {
@@ -26,11 +27,16 @@ public class Item {
     private boolean lit;
 
     public Item(String code, String name, boolean portable, boolean container, boolean locked) {
+        this(code, name, portable, container, locked, false);
+    }
+
+    public Item(String code, String name, boolean portable, boolean container, boolean locked, boolean ignitable) {
         this.code = code;
         this.name = name;
         this.portable = portable;
         this.container = container;
         this.locked = locked;
+        this.ignitable = ignitable;
     }
 
     public String getCode() {
@@ -63,6 +69,10 @@ public class Item {
 
     public void setOpened(boolean opened) {
         this.opened = opened;
+    }
+
+    public boolean isIgnitable() {
+        return ignitable;
     }
 
     public boolean isLit() {

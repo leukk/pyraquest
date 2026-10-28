@@ -75,7 +75,7 @@
   "ignite.tnt": "Škrtneš křesadlem a doutnák zasyčí. Uteč na severní rozcestí, hned teď!",
   "ignite.error.noParam": "Co chceš zapálit?",
   "ignite.error.notHere": "Tohle tu nemáš po ruce.",
-  "ignite.error.burning": "Pochodeň už hoří.",
+  "ignite.error.burning": "Věc už hoří.",
   "ignite.error.noFlint": "Nemáš čím škrtnout. Bez křesadla nic nezapálíš.",
   "ignite.error.tntInBackpack": "TNT v batohu nezapaluj. Polož ho ke zdi.",
   "ignite.error.tntWrongRoom": "Tady by výbuch nic neotevřel. Zeď je v předsíni hrobky.",

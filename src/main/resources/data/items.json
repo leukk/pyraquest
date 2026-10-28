@@ -5,6 +5,7 @@
       "name": "Nůž",
       "portable": true,
       "container": false,
+      "ignitable": false,
       "location": {
         "type": "room",
         "code": "chodba"
@@ -15,6 +16,7 @@
       "name": "Křesadlo",
       "portable": true,
       "container": false,
+      "ignitable": false,
       "location": {
         "type": "room",
         "code": "pokladnice"
@@ -25,6 +27,7 @@
       "name": "Zlatá cihla",
       "portable": true,
       "container": false,
+      "ignitable": false,
       "location": {
         "type": "room",
         "code": "pokladnice"
@@ -35,6 +38,7 @@
       "name": "Pochodeň",
       "portable": true,
       "container": false,
+      "ignitable": true,
       "location": {
         "type": "room",
         "code": "doupe"
@@ -45,6 +49,7 @@
       "name": "Kost",
       "portable": true,
       "container": false,
+      "ignitable": false,
       "location": {
         "type": "item",
         "code": "hromada-kosti"
@@ -55,6 +60,7 @@
       "name": "Klíč",
       "portable": true,
       "container": false,
+      "ignitable": false,
       "location": {
         "type": "npc",
         "code": "kostlivec"
@@ -65,6 +71,7 @@
       "name": "TNT",
       "portable": true,
       "container": false,
+      "ignitable": true,
       "location": {
         "type": "item",
         "code": "truhla"
@@ -75,6 +82,7 @@
       "name": "Maska",
       "portable": true,
       "container": false,
+      "ignitable": false,
       "location": {
         "type": "item",
         "code": "sarkofag"
@@ -85,6 +93,7 @@
       "name": "Hromada kostí",
       "portable": false,
       "container": true,
+      "ignitable": false,
       "location": {
         "type": "room",
         "code": "kostnice"
@@ -95,6 +104,7 @@
       "name": "Truhla",
       "portable": false,
       "container": true,
+      "ignitable": false,
       "locked": true,
       "location": {
         "type": "room",
@@ -106,6 +116,7 @@
       "name": "Sarkofág",
       "portable": false,
       "container": true,
+      "ignitable": false,
       "location": {
         "type": "room",
         "code": "hrobka"
@@ -116,6 +127,7 @@
       "name": "Zeď",
       "portable": false,
       "container": false,
+      "ignitable": false,
       "location": {
         "type": "room",
         "code": "predsin"

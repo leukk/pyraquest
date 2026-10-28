@@ -76,7 +76,7 @@ public class WorldLoader {
         List<ItemData> data = requireList(read("/data/items.json", ItemsFile.class).items, "items");
         Map<String, Item> items = new LinkedHashMap<>();
         for (ItemData d : data) {
-            items.put(d.code, new Item(d.code, d.name, d.portable, d.container, d.locked));
+            items.put(d.code, new Item(d.code, d.name, d.portable, d.container, d.locked, d.ignitable));
         }
         for (ItemData d : data) {
             Item item = items.get(d.code);
@@ -136,6 +136,7 @@ public class WorldLoader {
         boolean portable;
         boolean container;
         boolean locked;
+        boolean ignitable;
         Location location;
     }
     private static class Location {
