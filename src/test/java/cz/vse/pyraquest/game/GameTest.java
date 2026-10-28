@@ -21,7 +21,9 @@ class GameTest {
             "system.quit", "Hra končí.",
             "system.lose.enemy.skorpion", "LOSS3",
             "system.lose.fuse", "LOSS5",
-            "system.lose.suffix", "SUFFIX"
+            "system.lose.suffix", "SUFFIX",
+            "take.error.guarded.pochoden", "GUARD-TAKE",
+            "search.error.bat", "GUARD-SEARCH"
     ));
 
     /** Every call to the factory builds a brand-new world, like WorldLoader.load() will. */
@@ -127,6 +129,40 @@ class GameTest {
         String output = game.processLine("jdi chodba");
 
         assertFalse(output.contains("LOSS3"));
+    }
+
+    @Test
+    void takingGuardedItemLosesWithTheCommandsOwnText() {
+        Game game = createGame(() -> {
+            Room den = roomWithScorpion();
+            den.addItem(new Item("pochoden", "Pochodeň", true, false, false));
+            return den;
+        });
+
+        String output = game.processLine("seber pochoden");
+
+        assertTrue(output.startsWith("GUARD-TAKE\n\nSUFFIX\n\n"));
+    }
+
+    @Test
+    void takingAnotherItemNextToEnemyStillLosesByGeneralRule() {
+        String output = gameWithScorpion().processLine("seber nuz");
+
+        assertTrue(output.startsWith("LOSS3\n\nSUFFIX\n\n"));
+    }
+
+    @Test
+    void searchingGuardedPileLosesWithTheCommandsOwnText() {
+        Game game = createGame(() -> {
+            Room ossuary = new Room("kostnice", "Kostnice", "popis", null);
+            ossuary.addItem(new Item("hromada-kosti", "Hromada kostí", false, true, false));
+            ossuary.addNpc(new Enemy("netopyr", "Netopýr", "hromada-kosti"));
+            return ossuary;
+        });
+
+        String output = game.processLine("prohledni hromada-kosti");
+
+        assertTrue(output.startsWith("GUARD-SEARCH\n\nSUFFIX\n\n"));
     }
 
     @Test

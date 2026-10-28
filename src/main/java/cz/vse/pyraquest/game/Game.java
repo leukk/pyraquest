@@ -19,6 +19,8 @@ public class Game {
     private static final String ATTACK = "utoc";
     private static final String MOVE = "jdi";
     private static final String FUSE_ESCAPE_ROOM = "rozcesti-sever";
+    private static final String TAKE = "seber";
+    private static final String SEARCH = "prohledni";
 
     public GameState getState() {
         return state;
@@ -106,7 +108,7 @@ public class Game {
         if (!input.getCommandName().equals(ATTACK)) {
             Room room = state.getPlayer().getCurrentRoom();
             for (Npc npc : room.getNpcs()) {
-                if (npc instanceof Enemy enemy && enemy.isAlive()) {
+                if (npc instanceof Enemy enemy && enemy.isAlive() && !isGuardedItemAttempt(enemy, input)) {
                     return state.getTexts().get("system.lose.enemy." + enemy.getCode());
                 }
             }
@@ -118,6 +120,13 @@ public class Game {
         }
 
         return null;
+    }
+
+    private boolean isGuardedItemAttempt(Enemy enemy, Parser.ParsedInput input) {
+        String name = input.getCommandName();
+        return (name.equals(TAKE) || name.equals(SEARCH))
+                && !input.getParameters().isEmpty()
+                && input.getParameters().get(0).equals(enemy.getGuardedItemCode());
     }
 
     private boolean isFuseEscape(Parser.ParsedInput input) {

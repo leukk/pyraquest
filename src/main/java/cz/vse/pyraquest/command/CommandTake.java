@@ -1,5 +1,9 @@
 package cz.vse.pyraquest.command;
 
+import cz.vse.pyraquest.domain.Enemy;
+import cz.vse.pyraquest.domain.Item;
+import cz.vse.pyraquest.domain.Npc;
+import cz.vse.pyraquest.domain.Room;
 import cz.vse.pyraquest.game.GameState;
 
 public class CommandTake implements ICommand {
@@ -15,9 +19,19 @@ public class CommandTake implements ICommand {
         if (parameters.length == 0)
             return state.getTexts().get("take.error.noParam");
 
+        Room room = state.getPlayer().getCurrentRoom();
+
         var item = state.getPlayer().getCurrentRoom().getItem(parameters[0]);
         if (item == null)
             return state.getTexts().get("take.error.notHere");
+
+        for (Npc npc : room.getNpcs()) {
+            if (npc instanceof Enemy enemy && enemy.isAlive()
+                    && item.getCode().equals(enemy.getGuardedItemCode())) {
+                state.lose();
+                return state.getTexts().get("take.error.guarded." + item.getCode());
+            }
+        }
 
         if (!item.isPortable())
             return state.getTexts().get("take.error.notPortable");
