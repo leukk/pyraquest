@@ -1,19 +1,6 @@
 package cz.vse.pyraquest.game;
 
-import cz.vse.pyraquest.command.CommandAnswer;
-import cz.vse.pyraquest.command.CommandAttack;
-import cz.vse.pyraquest.command.CommandGive;
-import cz.vse.pyraquest.command.CommandHelp;
-import cz.vse.pyraquest.command.CommandHint;
-import cz.vse.pyraquest.command.CommandIgnite;
-import cz.vse.pyraquest.command.CommandMove;
-import cz.vse.pyraquest.command.CommandOpen;
-import cz.vse.pyraquest.command.CommandQuit;
-import cz.vse.pyraquest.command.CommandSearch;
-import cz.vse.pyraquest.command.CommandTalk;
-import cz.vse.pyraquest.command.CommandUnlock;
-import cz.vse.pyraquest.command.ICommand;
-import cz.vse.pyraquest.command.Parser;
+import cz.vse.pyraquest.command.*;
 import cz.vse.pyraquest.domain.Enemy;
 import cz.vse.pyraquest.domain.Npc;
 import cz.vse.pyraquest.domain.Room;
@@ -54,7 +41,8 @@ public class Game {
         register(new CommandTalk());
         register(new CommandUnlock());
         register(new CommandAnswer());
-        // jeste seber a poloz
+        register(new CommandTake());
+        register(new CommandDrop());
     }
 
     void register(ICommand command) {

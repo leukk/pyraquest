@@ -39,8 +39,12 @@ public class Backpack {
         return null;
     }
 
-    public void add(Item item) {
+    public boolean add(Item item) {
+        if (isFull())
+            return false;
+
         items.add(item);
+        return true;
     }
 
     public void remove(Item item) {
