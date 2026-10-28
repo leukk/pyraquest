@@ -12,7 +12,7 @@ import java.util.List;
 public class SaveFile {
 
     private static final Gson GSON = new Gson();
-    private static final String VALID_NAME = "[0-9_-]+";
+    private static final String VALID_NAME = "[a-zA-Z0-9_-]+";
 
     public record Data(long seed, List<String> moves) {
     }
