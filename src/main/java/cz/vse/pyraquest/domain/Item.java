@@ -23,6 +23,7 @@ public class Item {
     private final List<Item> contents = new ArrayList<>();
     private boolean locked;
     private boolean opened;
+    private boolean lit;
 
     public Item(String code, String name, boolean portable, boolean container, boolean locked) {
         this.code = code;
@@ -62,6 +63,14 @@ public class Item {
 
     public void setOpened(boolean opened) {
         this.opened = opened;
+    }
+
+    public boolean isLit() {
+        return lit;
+    }
+
+    public void setLit(boolean lit) {
+        this.lit = lit;
     }
 
     public List<Item> getContents() {

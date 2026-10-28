@@ -1,6 +1,7 @@
 package cz.vse.pyraquest.game;
 
 import cz.vse.pyraquest.data.Texts;
+import cz.vse.pyraquest.domain.Item;
 import cz.vse.pyraquest.domain.Player;
 import cz.vse.pyraquest.domain.Room;
 
@@ -24,7 +25,6 @@ public class GameState {
 
     private final List<String> moves = new ArrayList<>();
     private Status status = Status.RUNNING;
-    private boolean fuseLit;
     private int wrongAnswers;
 
     public GameState(Player player, Map<String, Room> rooms, Texts texts) {
@@ -70,11 +70,9 @@ public class GameState {
     }
 
     public boolean isFuseLit() {
-        return fuseLit;
-    }
-
-    public void setFuseLit(boolean fuseLit) {
-        this.fuseLit = fuseLit;
+        var tntPlacementRoom = rooms.get("predsin");
+        var tnt = tntPlacementRoom == null ? null : tntPlacementRoom.getItem("tnt");
+        return tnt != null && tnt.isLit();
     }
 
     public int getWrongAnswers() {

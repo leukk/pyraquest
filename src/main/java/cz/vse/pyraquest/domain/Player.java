@@ -1,7 +1,6 @@
 package cz.vse.pyraquest.domain;
 
 public class Player {
-
     private Room currentRoom;
     private final Backpack backpack = new Backpack();
 

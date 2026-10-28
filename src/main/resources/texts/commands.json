@@ -1,9 +1,11 @@
 {
   "move.error.noParam": "Kam chceš jít? Napiš třeba: jdi chodba",
+  "move.error.invalidParam": "Neplatná místnost. Napiš třeba: jdi chodba",
   "move.error.notAdjacent": "Tam se odsud nedostaneš.",
   "move.error.dark": "V kostnici je tma jako v hrobě. Bez zapálené pochodně tam nevlezeš.",
   "move.error.wall": "Cestu do hrobky zatarasila veliká zeď.",
   "move.explosion": "Doběhneš na rozcestí a za tebou to strašlivě bouchne. Ze zdi v předsíni zbyla jen suť.",
+  "move.success": "Jsi v místnosti %s.",
 
   "take.success": "Sebral jsi: %s.",
   "take.error.noParam": "Co chceš sebrat?",
