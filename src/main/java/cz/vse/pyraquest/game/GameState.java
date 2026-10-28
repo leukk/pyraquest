@@ -1,7 +1,6 @@
 package cz.vse.pyraquest.game;
 
 import cz.vse.pyraquest.data.Texts;
-import cz.vse.pyraquest.domain.Item;
 import cz.vse.pyraquest.domain.Player;
 import cz.vse.pyraquest.domain.Room;
 
@@ -22,15 +21,21 @@ public class GameState {
     private final Player player;
     private final Map<String, Room> rooms;
     private final Texts texts;
+    private final long questionsSeed;
 
     private final List<String> moves = new ArrayList<>();
     private Status status = Status.RUNNING;
     private int wrongAnswers;
 
     public GameState(Player player, Map<String, Room> rooms, Texts texts) {
+        this(player, rooms, texts, 0);
+    }
+
+    public GameState(Player player, Map<String, Room> rooms, Texts texts, long questionsSeed) {
         this.player = player;
         this.rooms = rooms;
         this.texts = texts;
+        this.questionsSeed = questionsSeed;
     }
 
     public Player getPlayer() {
@@ -47,6 +52,10 @@ public class GameState {
 
     public Texts getTexts() {
         return texts;
+    }
+
+    public long getQuestionsSeed() {
+        return questionsSeed;
     }
 
     public Status getStatus() {
@@ -90,6 +99,4 @@ public class GameState {
     public void recordMove(String move) {
         moves.add(move);
     }
-
-    // TODO (save/load): store the drawn mummy questions here as well
 }

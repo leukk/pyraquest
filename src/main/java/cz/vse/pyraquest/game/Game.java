@@ -1,17 +1,20 @@
 package cz.vse.pyraquest.game;
 
 import cz.vse.pyraquest.command.*;
+import cz.vse.pyraquest.data.SaveFile;
 import cz.vse.pyraquest.domain.Enemy;
 import cz.vse.pyraquest.domain.Npc;
 import cz.vse.pyraquest.domain.Room;
 
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.function.Supplier;
+import java.util.function.LongFunction;
 
 public class Game {
-    private final Supplier<GameState> worldFactory;
+    private final LongFunction<GameState> worldFactory;
+    private final SaveFile saveFile;
     private final Parser parser = new Parser();
     private final Map<String, ICommand> commands = new HashMap<>();
     private GameState state;
@@ -21,18 +24,34 @@ public class Game {
     private static final String FUSE_ESCAPE_ROOM = "rozcesti-sever";
     private static final String TAKE = "seber";
     private static final String SEARCH = "prohledni";
+    private static final Path SAVE_DIR = Path.of("save-files");
 
     public GameState getState() {
         return state;
     }
 
-    public Game(Supplier<GameState> worldFactory) {
+    public void setState(GameState state) {
+        this.state = state;
+    }
+
+    public Game(LongFunction<GameState> worldFactory) {
+        this(worldFactory, new SaveFile(SAVE_DIR));
+    }
+
+    public Game(LongFunction<GameState> worldFactory, SaveFile saveFile) {
+        this(worldFactory, saveFile, System.nanoTime());
+    }
+
+    private Game(LongFunction<GameState> worldFactory, SaveFile saveFile, long questionsSeed) {
         this.worldFactory = worldFactory;
-        this.state = worldFactory.get();
+        this.saveFile = saveFile;
+        this.state = worldFactory.apply(questionsSeed);
 
         register(new CommandHelp());
         register(new CommandHint());
         register(new CommandQuit());
+        register(new CommandSave(saveFile));
+        register(new CommandLoad(this, saveFile));
 
         register(new CommandMove());
         register(new CommandAttack());
@@ -51,6 +70,10 @@ public class Game {
         commands.put(command.getName(), command);
     }
 
+    public Game newGame(long seed) {
+        return new Game(worldFactory, saveFile, seed);
+    }
+
     public boolean isRunning() {
         return state.isRunning();
     }
@@ -61,6 +84,10 @@ public class Game {
     }
 
     public String processLine(String line) {
+        return processLine(line, false);
+    }
+
+    public String processLine(String line, boolean skipSystemCommand) {
         Parser.ParsedInput input = parser.parse(line);
         if (input == null) {
             return "";
@@ -69,6 +96,14 @@ public class Game {
         ICommand command = commands.get(input.getCommandName());
         if (command == null) {
             return state.getTexts().get("system.unknown");
+        }
+
+        if (!command.isSystem()) {
+            state.recordMove(toMove(input));
+        }
+
+        if (skipSystemCommand && command.isSystem()) {
+            return "";
         }
 
         String output;
@@ -90,9 +125,13 @@ public class Game {
         return output;
     }
 
+    private static String toMove(Parser.ParsedInput input) {
+        return (input.getCommandName() + " " + String.join(" ", input.getParameters())).trim();
+    }
+
     //restart
     private String restart(String lossText) {
-        state = worldFactory.get();
+        state = worldFactory.apply(System.nanoTime());
         return lossText + "\n\n"
                 + state.getTexts().get("system.lose.suffix") + "\n\n"
                 + RoomPrinter.describe(state);
