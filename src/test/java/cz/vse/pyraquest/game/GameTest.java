@@ -28,7 +28,7 @@ class GameTest {
 
     /** Every call to the factory builds a brand-new world, like WorldLoader.load() will. */
     private Game createGame(Supplier<Room> startRoomFactory) {
-        return new Game(() -> {
+        return new Game(seed -> {
             Room start = startRoomFactory.get();
             return new GameState(new Player(start), Map.of(start.getCode(), start), texts);
         });
@@ -237,6 +237,17 @@ class GameTest {
         assertFalse(newState.isFuseLit());
         Enemy scorpion = (Enemy) newState.getPlayer().getCurrentRoom().getNpc("skorpion");
         assertTrue(scorpion.isAlive());
+    }
+
+    @Test
+    void skipSystemCommandSkipsOnlySystemCommands() {
+        Game game = createGame();
+
+        assertEquals("", game.processLine("konec", true));
+        assertTrue(game.isRunning());
+
+        game.processLine("jdi chodba", true);
+        assertEquals(java.util.List.of("jdi chodba"), game.getState().getMoves());
     }
 
     @Test

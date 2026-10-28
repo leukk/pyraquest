@@ -40,7 +40,7 @@ public class WorldLoader {
         loadItems(rooms, npcs);
 
         Room start = find(rooms, START_ROOM, "start room");
-        return new GameState(new Player(start), rooms, texts);
+        return new GameState(new Player(start), rooms, texts, riddleSeed);
     }
 
     private static Map<String, Room> loadRooms() {
