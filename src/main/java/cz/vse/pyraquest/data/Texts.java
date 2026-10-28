@@ -31,6 +31,10 @@ public class Texts {
         return text != null ? text : "[missing text: " + key + "]";
     }
 
+    public String get(String key, Object... args) {
+        return String.format(get(key), args);
+    }
+
     public static Texts fromJson(String json) {
         return new Texts(parse(new StringReader(json), "JSON string"));
     }

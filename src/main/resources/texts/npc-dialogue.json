@@ -1,1 +1,10 @@
-[]
+{
+  "skeleton.talk.before": "Kostlivec zaskřípe čelistí: „Jeden vykradač mi vytrhl kost z ruky a hodil ji v kostnici na hromadu. Přines mi ji a dám ti klíč. Vezmi si světlo, v kostnici je tma. A pozor na netopýra.“",
+  "skeleton.talk.after": "Kostlivec spokojeně kroutí rukou. „Klíč máš. Patří k truhle u mumie.“",
+  "skeleton.give.success": "Kostlivec si kost zacvakne zpátky do ruky a podá ti rezavý klíč. „Je od truhly u mumie.“",
+  "mummy.talk.start": "Mumie k tobě otočí zavázanou hlavu. „Odpověz mi na tři otázky a truhla je tvoje. Spleteš se třikrát a zůstaneš tu se mnou.“",
+  "mummy.talk.waiting": "„Pořád čekám na odpověď.“",
+  "mummy.talk.solved": "Mumie se dívá do prázdna. „Už jsi dostal, co jsi chtěl.“",
+  "riddle.question.header": "Otázka %d ze 3:",
+  "riddle.question.footer": "Odpověz příkazem: odpovez <cislo>"
+}
