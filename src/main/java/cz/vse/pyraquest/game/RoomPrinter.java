@@ -50,16 +50,12 @@ public class RoomPrinter {
     }
 
     private static List<String> visibleNpcCodes(Room room) {
-        List<String> codes = new ArrayList<>();
-        for (Npc npc : room.getNpcs()) {
-            if (npc instanceof Enemy enemy && !enemy.isAlive()) {
-                continue;
-            }
-            codes.add(npc.getCode());
-        }
-        return codes;
+        return room.getNpcs()
+                .stream()
+                .filter(npc -> !(npc instanceof Enemy enemy) || enemy.isAlive())
+                .map(Npc::getCode)
+                .toList();
     }
-
     private static List<String> backpackCodes(Backpack backpack) {
         List<String> codes = new ArrayList<>();
         for (Item item : backpack.getItems()) {
