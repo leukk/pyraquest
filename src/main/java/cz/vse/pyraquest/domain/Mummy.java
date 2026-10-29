@@ -13,8 +13,4 @@ public class Mummy extends Npc {
         return riddle;
     }
 
-    @Override
-    public String talk() {
-        return "TODO: spustit hádanku nebo zopakovat otázku";
-    }
 }

@@ -38,7 +38,6 @@ public abstract class Npc {
         items.remove(item);
     }
 
-    public abstract String talk();
 
     public boolean acceptsGift(Item item) {
         return false;

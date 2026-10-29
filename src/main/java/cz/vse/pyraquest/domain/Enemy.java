@@ -22,8 +22,4 @@ public class Enemy extends Npc {
         alive = false;
     }
 
-    @Override
-    public String talk() {
-        return "Tohle ti neodpoví.";
-    }
 }

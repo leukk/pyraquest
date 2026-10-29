@@ -21,10 +21,8 @@ public class Skeleton extends Npc {
         traded = true;
     }
 
-    @Override
-    public String talk() {
+    public void markTalkedTo() {
         talkedTo = true;
-        return traded ? "TODO: text po výměně" : "TODO: text před výměnou";
     }
 
     @Override

@@ -30,7 +30,7 @@ public class CommandTalk implements ICommand {
         if (npc instanceof Skeleton) {
             Skeleton skeleton = (Skeleton) npc;
 
-            skeleton.talk();
+            skeleton.markTalkedTo();
 
             if (skeleton.hasTraded()) {
                 return state.getTexts().get("skeleton.talk.after");
