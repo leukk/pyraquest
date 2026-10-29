@@ -24,17 +24,31 @@ public class SaveFile {
     }
 
     public void write(String name, Data data) throws IOException {
-        Path file = path(name);
-        Files.createDirectories(directory);
-        Files.writeString(file, GSON.toJson(data));
+        try{
+            Path file = path(name);
+            Files.createDirectories(directory);
+            Files.writeString(file, GSON.toJson(data));
+        } catch (IOException e){
+            throw new IOException("Nepodařilo se uložit hru: " + name, e);
+        }
     }
 
     public Data read(String name) throws IOException {
-        Data data = GSON.fromJson(Files.readString(path(name)), Data.class);
-        if (data == null || data.moves() == null) {
-            throw new JsonParseException("Missing moves in save " + name);
+        try {
+            String json = Files.readString(path(name));
+            Data data = GSON.fromJson(json, Data.class);
+
+            if (data == null || data.moves() == null) {
+                throw new JsonParseException("Missing moves in save " + name);
+            }
+            return data;
+        } catch (NoSuchFileException e) {
+            throw new IOException("Uložená hra neexistuje: " + name, e);
+        } catch (IOException e) {
+            throw new IOException("Nepodařilo se načíst hru: " + name, e);
+        } catch (JsonParseException e) {
+            throw new IOException("Poškozený soubor uložené hry: " + name, e);
         }
-        return data;
     }
 
     private Path path(String name) throws NoSuchFileException {
