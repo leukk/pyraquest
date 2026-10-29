@@ -1,6 +1,7 @@
 package cz.vse.pyraquest.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Backpack {
@@ -10,7 +11,7 @@ public class Backpack {
     private final List<Item> items = new ArrayList<>();
 
     public List<Item> getItems() {
-        return items;
+        return Collections.unmodifiableList(items);
     }
 
     public boolean isFull() {
