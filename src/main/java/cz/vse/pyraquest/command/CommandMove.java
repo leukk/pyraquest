@@ -44,8 +44,9 @@ public class CommandMove implements ICommand {
 
         switch (condition) {
             case "dark" -> {
-                Item torch = state.getPlayer().getBackpack().get("pochoden");
-                if (torch == null || !torch.isLit()) {
+                Item carried = state.getPlayer().getBackpack().get("pochoden");
+                Item onFloor = target.getItem("pochoden");
+                if ((carried == null || !carried.isLit()) && (onFloor == null || !onFloor.isLit())) {
                     return state.getTexts().get("move.error.dark");
                 }
             }
